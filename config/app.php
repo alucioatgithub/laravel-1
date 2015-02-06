@@ -148,7 +148,7 @@ return [
         /*
          *  To convert HTML to PDF
          * */
-        //'Vsmoraes\Pdf\PdfServiceProvider'
+        'Barryvdh\DomPDF\ServiceProvider',
 
 	],
 
@@ -197,6 +197,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+        'PDF'       => 'Barryvdh\DomPDF\Facade',
 
 	],
 

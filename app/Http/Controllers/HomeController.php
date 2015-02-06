@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers;
-
+use App;
 class HomeController extends Controller {
 
 	/*
@@ -32,5 +32,15 @@ class HomeController extends Controller {
 	{
 		return view('home');
 	}
+
+    public function topdf()
+    {
+        $pdf = App::make('dompdf');
+        $pdf->loadView('pdf/PrintView');
+
+        return $pdf->download('testpdf.pdf');
+        return $pdf->stream();
+
+    }
 
 }

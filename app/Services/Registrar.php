@@ -3,6 +3,8 @@
 use App\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use DB;
+use Schema;
 
 class Registrar implements RegistrarContract {
 
@@ -30,12 +32,44 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
+		$user = User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
             'username' => $data['username']
 		]);
+
+        $this->createdb($data['username']);
+        return $user;
 	}
+
+    public function createdb($dbname)
+    {
+        $prefix = 'laraapp_';
+        $dbname = $prefix.$dbname;
+
+        DB::statement( 'CREATE DATABASE IF NOT EXISTS '.$dbname);
+
+        configureConnectionByName( $dbname, 'root', 'root');
+        
+        if(! Schema::hasTable( 'customer' )) {
+
+            Schema::create('customer', function($t) {
+                // auto increment id (primary key)
+                $t->increments('id');
+
+                $t->string('name');
+                $t->integer('age')->nullable();
+                $t->boolean('active')->default(1);
+                $t->integer('role_id')->unsigned();
+                $t->text('bio');
+
+                // created_at, updated_at DATETIME
+                $t->timestamps();
+            });
+        }
+
+
+    }
 
 }

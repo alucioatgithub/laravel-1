@@ -10,6 +10,10 @@
 				<div class="panel-body">
 					You are logged in!
 				</div>
+
+                <a href="<?php echo URL::to('/topdf'); ?>" class="btn btn-primary" type="submit">
+                    Print PDF
+                </a>
 			</div>
 		</div>
 	</div>
