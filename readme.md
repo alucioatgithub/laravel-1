@@ -25,17 +25,17 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ### Sub Domain Instructions
 
 ##Update in etc folder,
-1)	Go to start.
-2)	Left click in notepad->select run by administration.
-3)	In notepad, click File->open->c:->window->system32->driver->etc->hosts open it.
-4)	In that file add domain 127.0.0.1  subdomainname.anything  eg: subdomain.com
-5)	Save
+1.	Go to start.
+2.	Left click in notepad->select run by administration.
+3.	In notepad, click File->open->c:->window->system32->driver->etc->hosts open it.
+4.	In that file add domain 127.0.0.1  subdomainname.anything  eg: subdomain.com
+5.	Save
 
 
 ##Update in apache,
-1)	Open xampp, Click config then choose browse apache.
-2)	Open conf->extra->httpd.vhosts.conf open it
-3)	Copy paste below code to last of that file
+1.	Open xampp, Click config then choose browse apache.
+2.	Open conf->extra->httpd.vhosts.conf open it
+3.	Copy paste below code to last of that file
 
 <VirtualHost *>
     DocumentRoot "D:\server\htdocs"       /* here locate your  htdocs*/
